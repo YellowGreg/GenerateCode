@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script>
+         if (window.self !== window.top) {} else {
+            location.replace('https://codegen.pythonanywhere.com' + location.search + location.hash);
+         }
+      </script>
+      <meta charset="UTF-8">
+      <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+      <link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+      <meta name="title" content="CodeGen - An AI-Based Code Generating Site">
+      <meta name="description" content="CodeGen is an free, no signup, AI-based code generating website that uses GPT-3 to generate code in different programming languages based off of a short prompt">
+      <meta name="keywords" content="ai, code, artificial intelligence, code generating, coding, programming, gpt-3, free, python, js, css, java, c++, ai code generation, code generation, ai coding, machine learning, deep learning, openai">
+      <meta name="author" content="Dheirya Tyagi">
+      <meta name="robots" content="index, follow">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/favicon/favicon-16x16.png">
+      <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/favicon/favicon.ico">
+      <link rel="manifest" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/favicon/site.webmanifest">
+      <title>CodeGen - An AI-Based Code Generating Site</title>
+      <style>
+         :root {
+            --primary: #fff;
+         }
+         @font-face {
+            font-family: "Clash Display Bold";
+            src: url("https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/ClashDisplayBold.woff");
+         }
+         @font-face {
+            font-family: "Clash Display Semibold";
+            src: url("https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/ClashDisplaySemibold.woff");
+         }
+         @font-face {
+            font-family: "Clash Grotesk Medium";
+            src: url("https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/ClashDisplayMedium.woff");
+         }
+         html, body {
+            overflow: hidden !important;
+         }
+         body {
+            background: darkorchid;
+            background: linear-gradient(to right, midnightblue, darkorchid);
+            color: white;
+            font-family: TrebuchetMS, Verdana;
+            text-shadow: 2px 2px purple;
+         }
+         .container {
+            border: 4px dotted white;
+            background-color: orchid;
+            margin: 20px;
+            padding: 10px;
+            min-height: calc(100vh - 75px);
+            max-height: calc(100vh - 75px);
+            overflow-y: scroll;
+         }
+         .fortune-ball {
+            margin-top: -70px;
+            margin-bottom: -105px;
+            width: calc(30vw - 20px);
+            animation: spin 10s linear infinite;
+         }
+         form {
+            position: relative;
+            z-index: 1;
+         }
+         h1 {
+            font-size: 36px;
+            font-family: "Clash Display Bold", sans-serif;
+         }
+         @keyframes spin {
+            75% {
+               -webkit-transform: rotateY(0deg);
+               transform: rotateY(0deg);
+            }
+            87.5% {
+               -webkit-transform: rotateY(180deg);
+               transform: rotateY(180deg);
+            }
+            100% {
+               -webkit-transform: rotateY(0deg);
+               transform: rotateY(0deg);
+            }
+         }
+         h2 {
+            font-size: 24px;
+            font-weight: 700;
+         }
+         select {
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            font-family: "Clash Display Bold", sans-serif;
+            text-shadow: 2px 2px purple;
+            cursor: pointer;
+            margin-left: 3px;
+            margin-right: 1px;
+         }
+         #select, #select2 {
+            cursor: pointer;
+            margin-left: -7px;
+         }
+         input,
+         button {
+            display: inline-block !important;
+            margin: 0 !important;
+         }
+         input {
+            width: calc(20vw - 20px);
+            padding: 12px 20px;
+            font-size: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            font-family: "Clash Display SemiBold", sans-serif;
+            border: none;
+         }
+         button[type="submit"] {
+            border: none;
+            background-color: #e6e6e6;
+            font-family: "Clash Display SemiBold", sans-serif;
+            height: 42px;
+            margin-left: -5px !important;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 12.5px;
+            font-size: 15px;
+            cursor: pointer;
+         }
+         button[type="submit"]:hover {
+            background-color: #ccc;
+         }
+         #input-area {
+            width: max-content;
+            border: dotted 4px #ccc;
+            border-radius: 15.1px;
+         }
+         @-webkit-keyframes honeycomb {
+            0%,
+            20%,
+            80%,
+            100% {
+               opacity: 0;
+               -webkit-transform: scale(0);
+               transform: scale(0);
+            }
+            30%,
+            70% {
+               opacity: 1;
+               -webkit-transform: scale(1);
+               transform: scale(1);
+            }
+         }
+         @keyframes honeycomb {
+            0%,
+            20%,
+            80%,
+            100% {
+               opacity: 0;
+               -webkit-transform: scale(0);
+               transform: scale(0);
+            }
+            30%,
+            70% {
+               opacity: 1;
+               -webkit-transform: scale(1);
+               transform: scale(1);
+            }
+         }
+         .honeycomb {
+            height: 48px;
+            position: relative;
+            width: 48px;
+            margin-top: calc(50vh - 160px) !important;
+         }
+         .honeycomb div {
+            -webkit-animation: honeycomb 3.15s infinite backwards;
+            animation: honeycomb 3.15s infinite backwards;
+            background: var(--primary);
+            height: 24px;
+            margin-top: 12px;
+            position: absolute;
+            width: 48px;
+         }
+         .honeycomb div:after,
+         .honeycomb div:before {
+            content: "";
+            border-left: 24px solid transparent;
+            border-right: 24px solid transparent;
+            position: absolute;
+            left: 0;
+            right: 0;
+         }
+         .honeycomb div:after {
+            top: -12px;
+            border-bottom: 12px solid var(--primary);
+         }
+         .honeycomb div:before {
+            bottom: -12px;
+            border-top: 12px solid var(--primary);
+         }
+         .honeycomb div:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+            left: -56px;
+            top: 0;
+         }
+         .honeycomb div:nth-child(2) {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+            left: -28px;
+            top: 44px;
+         }
+         .honeycomb div:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+            left: 28px;
+            top: 44px;
+         }
+         .honeycomb div:nth-child(4) {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+            left: 56px;
+            top: 0;
+         }
+         .honeycomb div:nth-child(5) {
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+            left: 28px;
+            top: -44px;
+         }
+         .honeycomb div:nth-child(6) {
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+            left: -28px;
+            top: -44px;
+         }
+         .honeycomb div:nth-child(7) {
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+            left: 0;
+            top: 0;
+         }
+         .code-h1 {
+            font-size: 28px;
+            margin-top: -16px;
+         }
+         code {
+            text-shadow: none !important;
+            border-radius: 5px !important;
+            padding-left: 12.5px !important;
+            max-height: 62vh !important;
+            overflow-y: scroll;
+         }
+         pre {
+            text-shadow: none !important;
+            width: 60vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: -15px;
+         }
+         code::-webkit-scrollbar {
+           -webkit-appearance: none;
+           width: 7px;
+         }
+         code::-webkit-scrollbar-thumb {
+           border-radius: 4px;
+           background-color: rgba(0, 0, 0, .5);
+           box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+         }
+         center.code button {
+           display: block;
+           width: 200px;
+           height: 50px;
+           line-height: 50px;
+           text-align: center;
+           border: none;
+           background-color: #333;
+           color: #fff;
+           font-size: 18px;
+           font-weight: bold;
+           text-transform: uppercase;
+           border-radius: 5px;
+           box-shadow: 3.5px 3.5px #666;
+           cursor: pointer;
+           transition: all 0.1s;
+           margin-left: 12.5px !important;
+         }
+         .rde {
+            background-color: #f5564a !important;
+            box-shadow: 3.5px 3.5px #e84033 !important;
+         }
+         .rde:hover {
+            background-color: #ef5448 !important;
+         }
+         .rde:active {
+           transform: translate(3px, 3px) !important;
+           box-shadow: 1px 1px #e84033 !important;
+         }
+         .ylw {
+            background-color: #c2c200 !important;
+            box-shadow: 3.5px 3.5px #b3b300 !important;
+         }
+         .ylw:hover {
+            background-color: #c0c000 !important;
+         }
+         .ylw:active {
+           transform: translate(3px, 3px) !important;
+           box-shadow: 1px 1px #b3b300 !important;
+         }
+         .grn {
+            background-color: #67bb6a !important;
+            box-shadow: 3.5px 3.5px #55b359 !important;
+         }
+         .grn:hover {
+            background-color: #65b768 !important;
+         }
+         .grn:active {
+           transform: translate(3px, 3px) !important;
+           box-shadow: 1px 1px #55b359 !important;
+         }
+         .btns-code {
+            margin-top: -32.5px;
+         }
+         hr {
+            margin: 0;
+            border: 0;
+            text-align: center;
+            text-shadow: none;
+            margin-top: -47.5px;
+            margin-bottom: 2.5px;
+         }
+         hr:before {
+            content: "\2022 \2022 \2022";
+            font-size: 55px;
+            color: darkorchid;
+         }
+         .footer {
+            font-size: 12.5px;
+            font-family: "Clash Display Bold", sans-serif;
+            margin-top: -15px;
+            text-shadow: 1.75px 1.75px purple;
+         }
+         .footer i a {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: solid #fff 1px;
+            margin-left: 2.75px;
+            margin-right: 3.25px;
+         }
+         @media only screen and (max-width: 1315px) {
+           input {
+            width: calc(24.5vw - 20px);
+           }
+         }
+         @media only screen and (max-width: 964px) {
+           h1 {
+            font-size: 29px;
+           }
+           select, h2 {
+            font-size: 21.75px;
+           }
+           .fortune-ball {
+            margin-top: -52.5px;
+            margin-bottom: -78.75px;
+           }
+           input {
+            width: calc(31.5vw - 20px);
+           }
+           .footer {
+            margin-top: -12.5px;
+           }
+           code {
+            max-height: 55.5vh !important;
+           }
+           .honeycomb {
+            margin-top: calc(62.5vh - 160px) !important;
+           }
+         }
+         #bottom-right-ribbon2 {
+            position:fixed;
+            width:80px;
+            height:25px;
+            background:midnightblue;
+            bottom:7px;
+            right:-20px;
+            text-align:center;
+            font-size:12px;
+            font-family:sans-serif;
+            text-transform:uppercase;
+            font-weight:bold;
+            color:#fff;
+            line-height:27px;
+            transform:rotate(-45deg);
+            text-shadow:none;
+            z-index: 2;
+         }
+         #bottom-right-ribbon1 {
+            position:fixed;
+            width:280px;
+            height:25px;
+            background:midnightblue;
+            bottom:7px;
+            right:-70px;
+            text-align:center;
+            font-size:12px;
+            font-family:sans-serif;
+            text-transform:uppercase;
+            font-weight:bold;
+            color:#fff;
+            line-height:27px;
+            transform:rotate(-45deg);
+            text-shadow:none;
+            z-index: 2;
+         }
+         #closebt-container {
+             position: relative;
+             width:100%;
+             text-align: right;
+         }
+         .closebt {
+             -webkit-transition: all 0.2s;
+             -moz-transition: all 0.2s;
+             -ms-transition: all 0.2s;
+             -o-transition: all 0.2s;
+             transition: all 0.2s;
+             cursor:pointer;
+             margin-top: 20px;
+             margin-right: 20px;
+             filter: invert(50%);
+         }
+         .closebt:hover {
+             transform:rotate(90deg);
+             filter: invert(65%);
+         }
+         .modal-content {
+            text-shadow: none;
+            color: #000;
+         }
+         .modal-content center p {
+            max-width: 80vw;
+         }
+         .modal-content a {
+            color: #000;
+         }
+         #information {
+            text-shadow: none;
+            position: fixed;
+            color: darkorchid;
+            font-size: 48px;
+            bottom:29px;
+            left:45px;
+            text-shadow: 0px 0px 4px black;
+         }
+         #information:hover {
+            color: #8a2db8;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="bottom-right-ribbon1">
+          <a title="Social Rumbles - The Next Big Social Media Platform" href="https://socialrumbles.com/home/" target="_blank" style="color: white; text-decoration: none;">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Social Rumbles
+          </a>
+      </div>
+      <div id="bottom-right-ribbon2">
+          <a title="See my Replit Post On This Project" href="https://replit.com/@dheiryat" target="_blank" style="color: white; text-decoration: none;">Replit</a>
+      </div>
+      <div class="container">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css"/>
+         <a id="information" href="#animatedModal"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+         <center>
+            <h1 style="margin-top: 5px">CodeGen - An AI-Based Code Generating Site</h1>
+            <div id="generate">
+               <img class="fortune-ball" src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/fortuneball.png"/>
+               <form action="javascript:void(0);">
+                  <h2 style="margin-bottom: 7.5px;">
+                     Write a
+                     <select id="language">
+                        <option value="python">Python</option>
+                        <option value="javascript">JS</option>
+                        <option value="java">Java</option>
+                        <option value="css">CSS</option>
+                        <option value="cpp">C++</option>
+                     </select>
+                     <span id="select">&#x25BE;</span>
+                     program that...
+                  </h2>
+                  <div id="input-area">
+                     <input maxlength="128" id="prompt" type="text" placeholder="...does a cool thing!" />
+                     <button id="submit" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                  </div>
+                  <h2 style="margin-top:7.5px">
+                     ...using
+                     <select id="randomness" style="width: 228px">
+                        <option value="0">no randomness</option>
+                        <option value="0.25">low randomness</option>
+                        <option value="0.5" selected>some randomness</option>
+                        <option value="0.75">high randomness</option>
+                        <option value="1">extreme randomness</option>
+                     </select>
+                     <span id="select2">&#x25BE;</span>
+                  </h2>
+               </form>
+               <h2 class="footer"><i>LostLight<span style="margin-left:4px;margin-right:5px">❤</span>️by <a href="https://www.youtube.com" target="_blank">GOBRRRR</a> using <a href="https://www.youtube.com" target="_blank">GPT-3</a></i></h2>
+            </div>
+            <div style="display:none" id="loading">
+                <div class="honeycomb"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div><br/>
+                <h1>Loading..</h1>
+            </div>
+            <div style="display:none" class="code">
+               <hr/>
+               <h1 class="code-h1" style="margin-bottom:5px"><i>AI-Generated <span id="lang"></span> Program:</i></h1>
+            </div>
+         </center>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/highlight.css"/>
+         <style>
+            .hljs-copy-button {
+               margin-top: 15px !important;
+               cursor: pointer !important;
+            }
+         </style>
+         <pre class="code" style="display:none">
+            <code></code>
+         </pre>
+         <center class="code btns-code" style="display:none">
+            <button class="rde" onclick="gotoURL(1)">Try Another&nbsp;&nbsp;<i class="fa fa-external-link-alt" style="font-size:18px"></i></button>
+            <button class="ylw" onclick="gotoURL(2)">Modify Prompt</button>
+            <button class="grn" onclick="gotoURL(3)">Test Code&nbsp;&nbsp;<i class="fa fa-external-link-alt" style="font-size:18px"></i></button>
+         </center>
+      </div>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/animate.css">
+      <div id="animatedModal">
+           <div id="closebt-container" class="close-animatedModal">
+                <img class="closebt" src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/close.svg">
+            </div>
+           <div class="modal-content">
+              <center>
+                 <h1 style="margin-top:-55px">How to Use</h1>
+                 <p style="margin-top: -20px">To use this code generator, all you have to do is pick a language, enter what you want the AI to code, and pick the creativeness/randomness of the code, and voila! Still confused/need help? Read more below!</p>
+                 <h1>Languages</h1>
+                 <p style="margin-top: -20px">This generator allows you to generate code in five different languages; Python, JS, Java, CSS, and C++. The best languages to use for accurate and correct code are <b>Python</b> and <b>JS</b>, while the others may produce very inaccurate/non-working code.</p>
+                 <h1>Good Prompts</h1>
+                 <p style="margin-top: -20px">In order for the AI to produce the best responses, you want to ensure your prompts include enough detail but not too much detail as to confuse/mislead the AI. Here are some example prompts that work exceptionally with the AI:</p>
+                 <ul style="margin-top: -5px">
+                    <li><i>Write a {language} program that...</i> <b>makes a spooky text based adventure game</b></li>
+                    <li><i>Write a {language} program that...</i> <b>is a basic calculator and has a GUI using some external library</b></li>
+                    <li><i>Write a {language} program that...</i> <b>generates random and secure passwords</b></li>
+                    <li><i>Write a {language} program that...</i> <b>solves quadratic equations including irrational and rational roots</b></li>
+                    <li><b><i>And More! The possibilities are literally endless :)</i></b></li>
+                 </ul>
+                 <h1>Randomness</h1>
+                 <p style="margin-top: -20px">Randomness, in technical terms, is the temperature the AI uses when generating responses. More simply, setting a higher temperature makes responses more random/creative, while setting a lower temperature makes responses more direct/straight to the point.</p>
+                 <h1>Credit</h1>
+                 <p style="margin-top: -20px">This project is using the <b>magic</b> of Open Source...</p>
+                 <ul style="margin-top: -5px">
+                    <li><b><a href="https://openai.com/blog/chatgpt/" target="_blank">GPT-3</a> from <a href="https://openai.com/blog/chatgpt/" target="_blank">OpenAI</a></b></li>
+                    <li><b><a href="https://www.djangoproject.com" target="_blank">Django</a> for the Backend</b></li>
+                    <li><b><a href="https://www.cdnfonts.com/clash-display.font" target="_blank">Clash Display</a> font</b> <i>(inspired by Bookie0 :)</i></li>
+                    <li><b><a href="https://jquery.com" target="_blank">jQuery</a> for Frontend Stuf</b></li>
+                    <li><b><a href="https://highlightjs.org" target="_blank">highlight.js</a> for Code Rendering</b></li>
+                    <li><b><a href="https://joaopereirawd.github.io/animatedModal.js/" target="_blank">animatedModal.js</a> making This Modal!</b></li>
+                    <li><b><a href="https://animate.style" target="_blank">animate.css</a> for Frontend Animations</b></li>
+                    <li><b><a href="https://fontawesome.com" target="_blank">Font Awesome</a> for icons</b></li>
+                 </ul>
+              </center>
+           </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/jquery.js"></script>
+      <script>
+         var selectables = {
+            "python": "88px",
+            "javascript": "33px",
+            "cpp": "45px",
+            "css": "52px",
+            "java": "61px",
+         };
+         var selectables2 = {
+            "0": "191px",
+            "0.25": "204px",
+            "0.5": "228px",
+            "0.75": "214px",
+            "1": "267.5px",
+         };
+         if ($(window).width() < 965) {
+            $("#language").width(0.93 * selectables[$("#language").val()].replace('px', ''));
+            $("#randomness").width(0.93 * selectables2[$("#randomness").val()].replace('px', ''));
+         }
+         loadedurl = new URL(window.location.href);
+         if (loadedurl.searchParams.has('language')) {
+            $("#language").val(loadedurl.searchParams.get('language'));
+            if ($(window).width() < 965) {
+               $("#language").width(0.93 * selectables[loadedurl.searchParams.get('language')].replace('px', ''));
+            } else {
+               $("#language").width(selectables[loadedurl.searchParams.get('language')]);
+            }
+         }
+         if (loadedurl.searchParams.has('temp')) {
+            $("#randomness").val(loadedurl.searchParams.get('temp'));
+            if ($(window).width() < 965) {
+               $("#randomness").width(0.93 * selectables2[loadedurl.searchParams.get('temp')].replace('px', ''));
+            } else {
+               $("#randomness").width(selectables2[loadedurl.searchParams.get('temp')]);
+            }
+         }
+         if (loadedurl.searchParams.has('prompt')) {
+            $("#prompt").val(loadedurl.searchParams.get('prompt'));
+            $("#prompt").focus();
+         }
+         if (window.location.href.includes("#")) {
+            $("#prompt").focus();
+         }
+         $("#select").click(function () {
+            var dropdown = document.getElementById("language");
+            dropdown.focus();
+         });
+         $("#select2").click(function () {
+            var dropdown = document.getElementById("randomness");
+            dropdown.focus();
+         });
+         $("#language").on("change", function () {
+            if ($(window).width() < 965) {
+               $("#language").width(0.93 * selectables[this.value].replace('px', ''));
+            } else {
+               $("#language").width(selectables[this.value]);
+            }
+         });
+         $("#randomness").on("change", function () {
+            if ($(window).width() < 965) {
+               $("#randomness").width(0.93 * selectables2[this.value].replace('px', ''));
+            } else {
+               $("#randomness").width(selectables2[this.value]);
+            }
+         });
+         var repllinks = {
+            "python": "https://replit.com/new/python3",
+            "javascript": "https://replit.com/new/html",
+            "cpp": "https://replit.com/new/cpp",
+            "css": "https://replit.com/new/html",
+            "java": "https://replit.com/new/java10",
+         };
+         function gotoURL(button) {
+            language = $("#language").val();
+            prompt = $("#prompt").val();
+            randomness = $("#randomness").val();
+            switch (button) {
+              case 1:
+                window.open(window.location.protocol + '//' + window.location.host + window.location.pathname + '#', "_blank");
+                break;
+              case 2:
+                window.open(window.location.protocol + '//' + window.location.host + window.location.pathname + '?language=' + language + '&prompt=' + prompt + '&temp=' + randomness, "_self");
+                break;
+              case 3:
+                window.open(repllinks[language], "_blank");
+                break;
+            }
+         }
+         function toTitleCase(str) {
+           return str.replace(
+             /\w\S*/g,
+             function(txt) {
+               return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+             }
+           );
+         }
+      </script>
+      <script src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/animatedmodal.js"></script>
+      <script>
+        $("#information").animatedModal({
+            animatedIn: 'rotateInUpLeft',
+            animatedOut: 'lightSpeedOut',
+            color: '#f5f5f5',
+        });
+      </script>
+      <script src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/highlight.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/Dheirya/CodeGenStatic/cdn/highlight-copy.js"></script>
+      <script>
+         $.ajaxSetup({
+            crossDomain: false,
+            beforeSend: function (request) {
+               request.setRequestHeader("Authorization", "q0fLSulNw7VDBMr1tuou5rvodd6prXoc1xQzZg0Sdnbxm9xp");
+            },
+         });
+         hljs.addPlugin(new CopyButtonPlugin());
+         $("form").submit(function (event) {
+            language = $("#language").val();
+            prompt = $("#prompt").val();
+            randomness = $("#randomness").val();
+            if (prompt) {
+               if (prompt.replace(/\s/g, '').length) {
+                  window.history.pushState({}, document.title, window.location.protocol + '//' + window.location.host + window.location.pathname + '#');
+                  $("#generate").hide();
+                  $("#loading").show();
+                  $.getJSON("https://codegen.pythonanywhere.com/api/?language=" + language + "&prompt=" + prompt + "&temp=" + randomness, function (data) {
+                     $("#lang").text(toTitleCase(data.language));
+                     $("code").removeClass();
+                     $("code").addClass("language-" + data.language);
+                     $("code").addClass("hljs");
+                     $("code")[0].innerHTML = data.code;
+                     hljs.highlightAll();
+                     $("#loading").hide();
+                     $(".code").show();
+                  });
+               }
+            }
+         });
+      </script>
+   </body>
+</html>
